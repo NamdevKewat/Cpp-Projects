@@ -1,0 +1,98 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+int arr[3][3]={{1,2,3},{4,5,6},{7,8,9}};
+string str1;
+string str2;
+int row;
+int column;
+char token;
+
+void shape(){
+    cout<<"Enter name of 1st Player :";
+    getline(cin,str1);
+    cout<<"Enter name of 2nd PLayer :";
+    getline(cin,str2);
+    cout<<str1<<" is 1st player ! so he/she will play first"<<endl;
+    cout<<str2<<" is 2nd player ! so he/she will play second"<<endl;
+    cout<<arr[0][0]<<"  |"<<arr[0][1]<<" |"<<arr[0][2]<<endl;
+    cout<<" __|__|__"<<endl;
+    cout<<arr[1][0]<<"  |"<<arr[1][1]<<" |"<<arr[1][2]<<endl;
+    cout<<" __|__|__"<<endl;
+    cout<<arr[2][0]<<"  |"<<arr[2][1]<<" |"<<arr[2][2]<<endl;
+    cout<<"   |  |  "<<endl;
+    cout<<"Choose Position !"<<endl;
+
+}
+
+void val(){
+    int digit;
+    if(token=='x'||'X'){
+        cout<<str1<<" Please Make a move ! <<(x or 0)>>"<<endl;
+        cin>>digit;
+    }
+    if(token=='0'){
+        cout<<str2<<" Please Make a move ! <<(x or 0)>>"<<endl;
+        cin>>digit;
+    }
+
+    if(digit==1){
+        row=0;
+        column=0;
+    }
+    if(digit==2){
+        row=0;
+        column=1;
+    }
+     if(digit==3){
+        row=0;
+        column=2;
+    }
+     if(digit==4){
+        row=1;
+        column=0;
+    }
+     if(digit==5){
+        row=1;
+        column=1;
+    }
+     if(digit==6){
+        row=1;
+        column=2;
+    }
+     if(digit==7){
+        row=2;
+        column=0;
+    }
+     if(digit==8){
+        row=2;
+        column=1;
+    }
+     if(digit==9){
+        row=2;
+        column=2;
+    }
+    else{
+        cout<<"Invalid Selection !"<<endl;
+    }
+
+    if(token=='x' && arr[row][column]!='0' && arr[row][column]!='x'){
+        arr[row][column]='x';
+        token='0';
+    }
+
+   else if(token=='0' && arr[row][column]!='0' && arr[row][column]!='x'){
+        arr[row][column]='0';
+        token='x';
+    }
+    else{
+        cout<<"There is no empty space left !"<<endl;
+        val();
+    }
+}
+
+int main(){
+    shape();
+    val();
+}
